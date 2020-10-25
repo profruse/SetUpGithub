@@ -1,1 +1,1 @@
-This is my fork of Dr.Ruses repository.
+This is my fork of Dr.Ruse's repository.
