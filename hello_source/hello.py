@@ -1,4 +1,5 @@
 def hello_message():
+    '''Tells CIS189 hello!'''
     return "Hello, CIS 189!"
 
 
