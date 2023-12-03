@@ -7,9 +7,11 @@ class PriorityQueue:  # Just a few small alterations to the Queue class
     def is_empty(self):
         return self.curr_size == 0  # Simply test the current size of the list
 
-    def enqueueAll(self):
+    def enqueueAll(self):  # Checks if a book is either complete or already in the queue and adds it to the queue if it is neither
         for i in self.catalogue.list:
             present = False
+            if i.complete:
+                present = True
             for j in self.items:
                 if i == j[0]:
                     present = True
@@ -17,17 +19,17 @@ class PriorityQueue:  # Just a few small alterations to the Queue class
                 pop = self.catalogue.priority(i)
                 self.items.append((i, pop))
                 self.curr_size += 1
-                self.bSort()
+                self.bSort()  # Sorts them afterward
 
     def translate(self, new):
         if not self.is_empty():  # Removes highest priority item
             item = self.items[0]
-            item[0].addVolume()
+            item[0].addVolume()  # Updates the necessary information to the book
             item[0].changePopularity(new)
-            print(f"Translating: {item[0].name}: Volume {item[0].volumes}")
+            print(f"Translating: {item[0].name}: Volume {item[0].volumes}")  # Displays what it's translating
             self.curr_size -= 1
             self.items.remove(self.items[0])
-            self.catalogue.sSort()
+            self.catalogue.sSort()  # Sorts the catalogue now that popularity has been updated
         else:
             raise Exception("Queue is empty!")
 
@@ -41,7 +43,7 @@ class PriorityQueue:  # Just a few small alterations to the Queue class
     def size(self):
         return self.curr_size  # Return the size variable
 
-    def bSort(self):
+    def bSort(self):  # Sorts all items based on priority
         for ind in range(len(self.items)):
             min_index = ind
 
@@ -53,7 +55,7 @@ class PriorityQueue:  # Just a few small alterations to the Queue class
             (self.items[ind], self.items[min_index]) = (self.items[min_index], self.items[ind])
 
     def print_queue(self):
-        if not self.is_empty():  # Prints out all items in stack, each on a new line unless empty
+        if not self.is_empty():  # Prints out all items in stack, each on a new line, unless empty
             stack_str = ""
             for x in self.items:
                 stack_str += x[0].name

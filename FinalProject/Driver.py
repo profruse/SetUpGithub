@@ -124,4 +124,3 @@ if __name__ == "__main__":
     print(TranslationQueue.print_queue())
     os.system("pause")
     JC.printC()
-    
