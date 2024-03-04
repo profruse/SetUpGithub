@@ -1,6 +1,7 @@
 def hello_message():
-    return "Hello, CIS 189!"
+    # Daniel Lebedev
+    return "Hello, CIS 152!"
 
 
 if __name__ == '__main__':
-    hello_message()
+    print(hello_message())
